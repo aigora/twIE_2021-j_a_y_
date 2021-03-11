@@ -4,7 +4,7 @@
 
 ## Integrantes del equipo
 
-ANGI GUO YIN @angiguoyin
+ANGI GUO YIN @angiguoyin - José F. Umiri @JoseUmiri
 
 ## Objetivos del trabajo
 
