@@ -6,6 +6,8 @@
 
 ANGI GUO YIN @angiguoyin 
 José F. Umiri @JoseUmiri
+YUAN QIAN @Yuan-Qian-XD
+
 
 ## Objetivos del trabajo
 
