@@ -4,7 +4,7 @@
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+ANGI GUO YIN @angiguoyin
 
 ## Objetivos del trabajo
 
