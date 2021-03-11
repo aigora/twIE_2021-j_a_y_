@@ -4,9 +4,9 @@
 
 ## Integrantes del equipo
 
-ANGI GUO YIN @angiguoyin\n
-José F. Umiri @JoseUmiri\n
-YUAN QIAN @Yuan-Qian-XD\n
+ANGI GUO YIN @angiguoyin
+José F. Umiri @JoseUmiri
+YUAN QIAN @Yuan-Qian-XD
 
 ## Objetivos del trabajo
 
