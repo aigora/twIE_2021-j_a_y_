@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+void menu_principal();
+void iniciar_juego();
+void instrucciones();
+void salir();
+
+
+int main()
+{
+    menu_principal();
+}
+
+void menu_principal() //Para regresar al menu principal
+{
+        char seleccion;
+
+            system("cls||clear");
+            printf("     Bienbenido a J_A_Y\n\n Qhe desea hacer?\n\n  a)Iniciar Juego.\n  b)Ver Instrucciones.\n  Para Salir del Juego,marque Enter dos veces.\n\n Gracias por jugar J_A_Y.\n\n");
+            scanf("%c",&seleccion);
+
+        switch (seleccion)
+        {
+            case 'a':
+            case 'A':
+                {
+                    iniciar_juego();
+                }
+            break;
+        //A es inicio de juego
+            case 'b':
+            case 'B':
+                {
+                    instrucciones();
+                }
+            break;
+        //B es mirar instruccion de juego
+            default:
+                {
+                    salir();
+                }
+            break;
+        //Pulsar cualquier otra tecla salir del juego
+        }
+
+    return 0;
+}
+
+void iniciar_juego()
+{
+    system("cls||clear");
+    printf("Inicio de juego\n");
+}
+
+
+void instrucciones()
+{
+    system("cls||clear");
+    printf("Instrucciones\n");
+}
+
+void salir()
+{
+    return 0;
+}
+
