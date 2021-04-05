@@ -4,6 +4,7 @@ void menu_principal();
 void iniciar_juego();
 void instrucciones();
 void salir();
+void limpiar();
 
 
 int main()
@@ -15,7 +16,7 @@ void menu_principal() //Para regresar al menu principal
 {
         char seleccion;
 
-            system("cls||clear");
+            limpiar();
             printf("     Bienbenido a J_A_Y\n\n Qhe desea hacer?\n\n  a)Iniciar Juego.\n  b)Ver Instrucciones.\n  Para Salir del Juego,marque Enter dos veces.\n\n Gracias por jugar J_A_Y.\n\n");
             scanf("%c",&seleccion);
 
@@ -46,16 +47,21 @@ void menu_principal() //Para regresar al menu principal
     return 0;
 }
 
+void limpiar()
+{
+   system("cls||clear");
+}
+
 void iniciar_juego()
 {
-    system("cls||clear");
+    limpiar();
     printf("Inicio de juego\n");
 }
 
 
 void instrucciones()
 {
-    system("cls||clear");
+    limpiar();
     printf("Instrucciones\n");
 }
 
