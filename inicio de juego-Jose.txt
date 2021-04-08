@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+float nom (float r);
+
+int main ()
+{
+printf ("_|      _|  _|_|_|_|  _|_|_|_|_|    _|_|      _|_|_|    _|_|    _|      _|  _|_|_|  _|      _|    _|_|_|\n");
+printf ("_|_|  _|_|  _|            _|      _|    _|  _|        _|    _|  _|_|  _|_|    _|    _|_|    _|  _|        \n");
+printf ("_|  _|  _|  _|_|_|        _|      _|_|_|_|  _|  _|_|  _|_|_|_|  _|  _|  _|    _|    _|  _|  _|  _|  _|_|  \n");
+printf ("_|      _|  _|            _|      _|    _|  _|    _|  _|    _|  _|      _|    _|    _|    _|_|  _|    _|  \n");
+printf ("_|      _|  _|_|_|_|      _|      _|    _|    _|_|_|  _|    _|  _|      _|  _|_|_|  _|      _|    _|_|_| \n");
+
+
+printf ("\n");
+printf ("\n");
+
+char elige;
+  float r, l;
+  char Nombre [20];//Aqui ira el nombre del jugador
+  char nuevo;
+  char er [20];//para la asignacion final
+
+  printf("Partida rapida (A)\nRegistrarse (B)\nVolver atras (C) \nSalir (S)\n");
+  scanf("%c", &elige);
+
+  switch(elige)
+    {
+    case 'a':
+    case 'A':
+      printf("QUE EMPIECE EL JUEGO!\n");
+      //codigo del juego
+      break;
+    case 'b':
+    case 'B':
+      printf("Introduce tu nombre: ");
+      scanf ("%s",&Nombre);
+      nuevo=nom(r);
+
+      break;
+    case 'c':
+    case 'C':
+      printf("Hasta la proxima!\n");//colocar bucle que antes de este
+      break;
+
+    case 's':
+    case 'S':
+      printf("FIN\n");
+      scanf("%f", &l);
+      break;
+    default:
+      printf("Vuelve a intentarlo\n");
+      return 0;
+    }
+  printf("\n Tu nombre es: %s\n", Nombre);
+  return 0;
+  //o es ahora donde va el codigo del juego?
+}
+
+float nom (float r)//se sustituyen a nuevo
+{
+
+  return 0;
+}
