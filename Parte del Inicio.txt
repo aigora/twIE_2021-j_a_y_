@@ -38,6 +38,8 @@ void menu_principal() //Para regresar al menu principal
         //B es mirar instruccion de juego
             default:
                 {
+                    limpiar();
+                    printf("Gracias por jugar\n\n\n");
                     salir();
                 }
             break;
@@ -67,6 +69,5 @@ void instrucciones()
 
 void salir()
 {
-    return 0;
+    exit(1);
 }
-
