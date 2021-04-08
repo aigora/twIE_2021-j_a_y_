@@ -1,0 +1,24 @@
+ switch(selec1)
+                    {
+                        case 1:
+                                do{
+                                system("cls");
+                                printf("\n 1. mostrar instrucciones del juego\n 2. Regresar al menu\n Opcion:");
+                                scanf("%d", &selec2);
+
+                                switch(selec2)
+                                {
+                                    case 1:
+
+                                            system("cls");
+                                            printf("El JAY es un juego de accion, que tiene luegar en un laberinto horizontal.\n El objetivo principal del jugador es salir de los laberintos y conseguir las monedas magicas.\n El jugador debe utilizar los siguientes comandos\n W= DELANTE\n S= ABAJO\n A= DERECHA\n D=IZQUIERDA\n");//instrucciones del juego
+                                            system("pause");//pausa el programa para no empezar de nuevo
+
+
+
+                                    break;
+                                    case 2:
+                                    break;
+
+                                }
+                                }while(selec2!=2);
