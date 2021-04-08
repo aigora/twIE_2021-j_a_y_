@@ -6,6 +6,7 @@ void instrucciones();
 void salir();
 void limpiar();
 
+float nom (float r);
 
 int main()
 {
@@ -17,7 +18,13 @@ void menu_principal() //Para regresar al menu principal
         char seleccion;
 
             limpiar();
-            printf("     Bienbenido a J_A_Y\n\n Qhe desea hacer?\n\n  a)Iniciar Juego.\n  b)Ver Instrucciones.\n  Para Salir del Juego,marque Enter dos veces.\n\n Gracias por jugar J_A_Y.\n\n");
+             system("color f0");
+                    printf("-------------------------\n");
+                    printf("       BIENVENIDO        \n");
+                    printf("           A             \n");
+                    printf("         J_A_Y           \n");
+                    printf("-------------------------\n");
+            printf(" Que desea hacer?\n\n  a)Iniciar Juego.\n  b)Ver Instrucciones.\n  Para Salir del Juego,marque Enter dos veces.\n\n ");
             scanf("%c",&seleccion);
 
         switch (seleccion)
@@ -55,18 +62,62 @@ void limpiar()
 void iniciar_juego()
 {
     limpiar();
-    printf("Inicio de juego\n");
+
+int elige;
+  float r, l;
+  char Nombre [20];//Aqui ira el nombre del jugador
+  char nuevo;
+  char er [20];//para la asignacion final
+
+  printf("a. Partida rapida\n b. Registrarse\n c. Volver atras\n Opcion:");
+  scanf("%c", &elige);
+
+  switch(elige)
+  {
+  case '1':
+      printf("Empezar");
+      break;
+  case '2':
+    printf("Registral");
+    scanf("%[^\n]",&Nombre);
+    nuevo=nom(r);
+    break;
+
+  }
+  printf("\n Tu nombre es: %s\n", Nombre);
+  return 0;
+  //o es ahora donde va el codigo del juego?
 }
+
 
 
 void instrucciones()
 {
     limpiar();
-    printf("Instrucciones\n");
+
+                                limpiar();
+                                printf("El JAY es un juego de accion, que tiene luegar en un laberinto horizontal.\n El objetivo principal del jugador es salir de los laberintos y conseguir las monedas magicas.\n El jugador debe utilizar los siguientes comandos\n W= DELANTE\n S= ABAJO\n A= DERECHA\n D=IZQUIERDA\n");//instrucciones del juego
+                                system("pause");//pausa el programa para no empezar de nuevo
+
+                                menu_principal();
+
 }
+
 
 void salir()
 {
+
+    printf("\tGracias por jugar J_A_Y\n\n\n");
+
     return 0;
+}
+
+
+
+
+float nom (float r)//se sustituyen a nuevo
+{
+
+  return 0;
 }
 
