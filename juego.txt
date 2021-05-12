@@ -1,24 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+
 
 int main()
 {
-    char a[15][30]={
+char a[15][30]={
                 "#######################",
-                "#O*   ##         ###  #",
-                "# #*     ##  #   #    #",
-                "#  ##  #   #  ##      #",
-                "# ### ##  ###* ########",
-                "# ###  ##     ####     ",
-                "#  ###### ##  ##    ###",
-                "#   #   # ## *#  ##   #",
-                "## ####  ####   #  ### ",
+                "#O                    #", 
+                "#     come *          #",
+                "#               y     #",
+                "#                     #",
+                "#        busca la     回",
+                "#                     #",
+                "#   SALIDA            #",
+                "#                     #",
                 "#######################",
                  };//[] esto es el dimension
 
 
-    time_t t1=time(NULL);//tiempo
     int i,x,y,p,q,estrella=0;
     char ch;
     x=1;y=1;p=5;q=22;
@@ -82,15 +81,14 @@ int main()
                 a[x][y]='O';
             }
         }
-        system("cls");
+        limpiar();
         for(i=0;i<=9;i++)
             puts(a[i]);
     }
-    system("cls");
+    limpiar();
     printf("You win\n");
     printf("Tu puntuacion de estrellas es de %i\n",estrella);
 
-    printf("Tiempo", time(NULL)-t1);
 
     system("pause");
     return 0;
