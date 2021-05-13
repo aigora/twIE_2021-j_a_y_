@@ -3,9 +3,11 @@ El objetivo principal del jugador es salir de los laberintos y conseguir las mon
 
 El jugador debe utilizar los siguientes comandos
 
-	W= DELANTE
+	W= ARRIBA
 	S= ABAJO
-	A= DERECHA
-	D= IZQUIERDA
+	A= IZQUIERDA
+	D= DERECHA
+	
+	X= Volver a seleccion de dificultad
 
   Disfruta del JUEGO .....
