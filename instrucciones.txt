@@ -1,0 +1,11 @@
+El JAY es un juego de accion, que tiene luegar en un laberinto horizontal.
+El objetivo principal del jugador es salir de los laberintos y conseguir las monedas magicas.
+
+El jugador debe utilizar los siguientes comandos
+
+	W= DELANTE
+	S= ABAJO
+	A= DERECHA
+	D= IZQUIERDA
+
+  Disfruta del JUEGO .....
