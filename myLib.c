@@ -1,58 +1,61 @@
+#include<stdio.h>
 #define N 15
 #define M 3//NIVELES
 int level=0;
 int x, y;
+int cuenta_estrellas[1]={0};
+
 
 int mapa[M][N][N]={
     {
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    {0,3,1,1,1,0,1,1,1,0,0,0,0,0,0},
+    {0,3,1,1,5,0,5,1,1,0,0,0,0,0,0},
     {0,1,0,0,1,0,0,0,1,0,1,1,1,0,0},
     {0,1,1,1,1,0,1,1,1,0,1,0,1,0,0},
     {0,0,1,0,1,0,1,0,1,1,1,0,1,0,0},
     {0,1,1,0,1,0,1,0,1,0,0,0,1,1,0},
-    {0,1,0,0,1,1,1,0,1,1,1,0,0,1,0},
-    {0,1,1,0,1,1,0,0,0,0,1,0,0,0,0},
-    {0,0,0,1,1,0,1,0,0,0,1,1,1,0,0},
-    {0,1,0,1,1,1,0,0,0,0,0,0,1,0,0},
+    {0,5,0,0,1,1,1,0,1,1,1,0,0,5,0},
+    {0,0,1,0,1,1,0,0,0,0,1,0,0,0,0},
+    {0,0,5,1,1,0,1,0,0,0,1,5,1,0,0},
+    {0,5,0,1,1,1,0,0,0,0,0,0,1,0,0},
     {0,1,0,1,0,1,1,0,0,0,0,0,1,1,4},
-    {0,0,1,1,0,1,1,1,0,1,0,1,0,1,0},
-    {0,1,0,1,0,0,0,1,0,1,1,0,1,0,0},
-    {0,1,0,1,1,1,1,1,1,1,1,0,1,1,0},
+    {0,1,1,1,0,1,1,1,0,5,0,1,0,1,0},
+    {0,1,0,1,0,0,0,1,0,1,1,0,1,5,0},
+    {0,5,0,1,1,1,1,1,1,1,1,0,1,1,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
 },
 {
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    {0,3,1,0,1,1,1,1,1,0,0,0,0,0,0},
-    {0,1,0,0,1,0,0,0,1,1,1,1,1,0,0},
+    {0,3,1,0,1,1,1,1,5,0,0,0,0,0,0},
+    {0,1,0,0,5,0,0,0,1,1,1,1,5,0,0},
     {0,1,1,1,1,1,1,1,0,0,1,0,1,0,0},
-    {0,0,0,0,1,0,1,0,1,1,1,0,1,0,0},
-    {0,1,0,0,1,0,1,0,1,0,0,0,1,1,0},
+    {0,0,0,0,5,0,1,0,1,5,1,0,1,0,0},
+    {0,1,0,0,1,0,1,0,1,0,0,0,1,5,0},
     {0,1,0,0,1,1,1,0,1,1,1,0,0,1,0},
-    {0,1,1,0,1,1,0,0,0,0,1,0,0,0,0},
-    {0,0,0,1,1,0,1,0,0,0,1,0,1,0,0},
+    {0,1,1,0,1,5,0,0,0,0,1,0,0,0,0},
+    {0,0,0,5,1,0,1,0,0,0,1,0,1,0,0},
     {0,1,1,1,1,1,0,0,1,1,1,0,1,0,0},
-    {0,1,0,1,0,1,1,0,1,0,0,0,1,1,0},
+    {0,5,0,1,0,1,1,0,1,0,0,0,1,1,0},
     {0,0,1,1,0,1,1,0,1,1,1,1,0,1,0},
-    {0,1,0,1,0,0,0,1,0,0,1,0,1,0,0},
-    {0,1,0,1,1,1,1,1,1,0,1,0,1,1,0},
+    {0,5,0,1,0,0,0,5,0,0,1,0,1,0,0},
+    {0,1,1,1,1,1,1,1,1,0,1,0,1,5,0},
     {0,0,0,0,0,0,0,0,0,0,4,0,0,0,0},
 },
 {
     {0,0,0,0,0,0,0,0,0,0,0,0,0,4,0},
     {0,3,1,1,1,1,0,1,0,1,1,1,0,1,0},
-    {0,0,0,0,0,1,1,0,0,1,0,1,1,1,0},
+    {0,0,0,0,0,5,1,0,0,1,0,1,1,1,0},
     {0,0,1,1,1,0,1,0,0,1,0,1,0,0,0},
-    {0,0,1,0,1,1,1,0,1,1,0,1,1,1,0},
-    {0,0,1,1,0,1,0,0,1,1,0,0,0,1,0},
-    {0,0,0,1,0,0,0,0,0,1,0,1,1,1,0},
-    {0,1,1,1,1,0,1,1,1,1,0,0,0,1,0},
-    {0,1,0,0,0,0,1,0,0,0,0,1,1,1,0},
+    {0,0,1,0,5,1,1,0,5,1,0,1,1,1,0},
+    {0,0,1,5,0,5,0,0,1,1,0,0,0,1,0},
+    {0,0,0,1,0,0,0,0,0,1,0,5,1,1,0},
+    {0,5,1,1,5,0,1,1,1,1,0,0,0,1,0},
+    {0,1,0,0,0,0,5,0,0,0,0,5,1,1,0},
     {0,1,1,0,0,0,0,0,1,0,0,1,0,0,0},
-    {0,0,1,1,1,0,0,1,1,1,1,1,1,1,0},
-    {0,0,1,0,0,1,0,0,1,0,0,0,0,1,0},
-    {0,0,1,0,1,1,1,0,0,0,0,1,0,1,0},
+    {0,0,1,1,5,0,0,5,1,1,1,1,1,1,0},
+    {0,0,1,0,0,5,0,0,5,0,0,0,0,1,0},
+    {0,0,1,0,1,1,1,0,0,0,0,5,0,1,0},
     {0,0,1,1,1,0,1,1,1,1,1,1,1,1,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 },
@@ -99,7 +102,7 @@ void iniciar_juego()
     int elige;
         printf(" 1. Inicio rapido\n 2. Nombrar al Campeon\n");
         scanf("%i",&elige);
-        char apodo[21];
+        char apodo[21];//////////////////////////////////////////////////////////////////////
 
         if(elige==1)
         {
@@ -138,7 +141,11 @@ void iniciar_juego()
 void instrucciones()
 {
 limpiar();
-printf("El JAY es un juego de accion, que tiene luegar en un laberinto horizontal.\nEl objetivo principal del jugador es salir de los laberintos y conseguir las monedas magicas.\n\nEl jugador debe utilizar los siguientes comandos\n\n\tW= DELANTE\n\tS= ABAJO\n\tA= DERECHA\n\tD= IZQUIERDA\n\n\n");//instrucciones del juego
+    FILE *instruccion;
+    instruccion = fopen("instrucciones.txt", "r");
+    char c;
+    while ((c=fgetc(instruccion))!=EOF)
+            putchar(c);
 system("pause");//pausa el programa para no empezar de nuevo
 menu_principal();
 }
@@ -159,7 +166,7 @@ void menu_juego()
 {
     limpiar();
     char select [10];
-    printf("\nDiga el nivel(1,2,3):\n");
+    printf("\nNivel de fificultad(1,2,3):\n");
     while(1) //ELEGIR LOS NIVELES
     {
          scanf("%c", select);
@@ -214,13 +221,20 @@ int movimiento()
         print();
         switch(getch())//RECIBIR ORDENES
         {
+            case 'W':
             case 'w': flag=Up();
             break;
+            case 'A':
             case 'a': flag=Left();
             break;
+            case 'S':
             case 's': flag=Down();
             break;
+            case 'D':
             case 'd': flag=Right();
+            break;
+            case 'X':
+            case 'x': menu_juego();
             break;
         }
         if(flag==1)
@@ -228,6 +242,7 @@ int movimiento()
             if(level==M-1)
             {
                 printf("Finalizado el juego\n");
+                printf(" Has conseguido %i estrellas.\n",cuenta_estrellas[0]);
                 salir();//TERMINAR LA PARTIDA
             }
         else
@@ -247,6 +262,12 @@ int Up()
             mapa[level][x-1][y]=3;
             mapa[level][x][y]=1;
         }
+        else if(mapa[level][x-1][y]==5)
+        {
+            mapa[level][x-1][y]=3;
+            mapa[level][x][y]=1;
+            cuenta_estrellas[0]+=1;
+        }
         else if(mapa[level][x-1][y]==4)
         {
             return 1;
@@ -262,6 +283,12 @@ int Down()
         {
             mapa[level][x+1][y]=3;
             mapa[level][x][y]=1;
+        }
+        else if(mapa[level][x+1][y]==5)
+        {
+            mapa[level][x+1][y]=3;
+            mapa[level][x][y]=1;
+            cuenta_estrellas[0]+=1;
         }
         else if(mapa[level][x+1][y]==4)
         {
@@ -279,6 +306,12 @@ if(y!=N-1)
             mapa[level][x][y+1]=3;
             mapa[level][x][y]=1;
         }
+        else if(mapa[level][x][y+1]==5)
+        {
+            mapa[level][x][y+1]=3;
+            mapa[level][x][y]=1;
+            cuenta_estrellas[0]+=1;
+        }
         else if(mapa[level][x][y+1]==4)
         {
             return 1;
@@ -294,6 +327,12 @@ if(x!=0)
         {
             mapa[level][x][y-1]=3;
             mapa[level][x][y]=1;
+        }
+        else if(mapa[level][x][y-1]==5)
+        {
+            mapa[level][x][y-1]=3;
+            mapa[level][x][y]=1;
+            cuenta_estrellas[0]+=1;
         }
         else if(mapa[level][x][y-1]==4)
         {
@@ -312,13 +351,15 @@ void print() //Imprimir el mapa en pantalla
         for(j=0;j<N; j++)
         {
             if(mapa[level][i][j]==0)
-                printf("�");//PARED
+                printf("[_]");//PARED
             else if(mapa[level][i][j]==3)
-                printf("O");//PERSONAJE
+                printf("(x)");//PERSONAJE
             else if(mapa[level][i][j]==1)
-                printf(" ");//ESPACIO
+                printf("   ");//ESPACIO
             else if(mapa[level][i][j]==4)
-                printf("X");//SALIDA
+                printf(" X ");//SALIDA
+            else if(mapa[level][i][j]==5)
+                printf(" * ");//ESTRELLA
         }
         printf("\n");
     }
