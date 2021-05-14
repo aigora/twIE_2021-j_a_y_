@@ -1,3 +1,7 @@
+#include<stdio.h>
+#define N 15
+#define M 3//NIVELES
+
 void menu_principal();
 void menu_juego();
 void iniciar_juego();
