@@ -1,6 +1,5 @@
-#include<stdio.h>
-#define N 15
-#define M 3//NIVELES
+#include"myLib.h"
+
 int level=0;
 int x, y;
 int cuenta_estrellas[1]={0};
