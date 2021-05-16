@@ -2,6 +2,7 @@
 #define N 15
 #define M 3//NIVELES
 
+
 void menu_principal();
 void menu_juego();
 void iniciar_juego();
@@ -10,7 +11,8 @@ void salir();
 void limpiar();
 char apodo[21];
 void print();
-void posicion();
+int posicion_x(void);
+int posicion_y(void);
 
 //Aqui comienza funciones del movimiento
 int movimiento();
