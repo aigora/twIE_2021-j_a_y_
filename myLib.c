@@ -1,6 +1,5 @@
 #include"myLib.h"
 
-int cuenta_estrellas[1]={0};
 int level=0;
 
 int mapa[M][N][N]={
@@ -137,6 +136,7 @@ void iniciar_juego()
 void menu_juego()
 {
     limpiar();
+    estrellas[0]=0;
     char select [2];
     printf("\nNivel de fificultad(1,2,3):\n");
     while(1) //ELEGIR LOS NIVELES
@@ -229,7 +229,7 @@ int movimiento()
             if(level==M-1)
             {
                 printf("Finalizado el juego\n");
-                printf(" Has conseguido %i estrellas.\n",cuenta_estrellas[0]);
+                printf(" Has conseguido %i estrellas.\n",estrellas[0]);
                 salir();//TERMINAR LA PARTIDA
             }
         else
@@ -256,7 +256,7 @@ int Up()
         {
             mapa[level][(x-1)][y]=3;
             mapa[level][x][y]=1;
-            cuenta_estrellas[0]+=1;
+            cuenta_estrellas();
         }
         else if(mapa[level][(x-1)][y]==4)
         {
@@ -281,7 +281,7 @@ int Down()
         {
             mapa[level][(x+1)][y]=3;
             mapa[level][x][y]=1;
-            cuenta_estrellas[0]+=1;
+            cuenta_estrellas();
         }
         else if(mapa[level][(x+1)][y]==4)
         {
@@ -306,7 +306,7 @@ int Right()
         {
             mapa[level][x][(y+1)]=3;
             mapa[level][x][y]=1;
-            cuenta_estrellas[0]+=1;
+            cuenta_estrellas();
         }
         else if(mapa[level][x][(y+1)]==4)
         {
@@ -331,7 +331,7 @@ int Left()
         {
             mapa[level][x][(y-1)]=3;
             mapa[level][x][y]=1;
-            cuenta_estrellas[0]+=1;
+            cuenta_estrellas();
         }
         else if(mapa[level][x][(y-1)]==4)
         {
@@ -362,6 +362,11 @@ void print() //Imprimir el mapa en pantalla
         }
         printf("\n");
     }
+}
+
+void cuenta_estrellas()
+{
+    estrellas[0]+=1;
 }
 
 void instrucciones()
