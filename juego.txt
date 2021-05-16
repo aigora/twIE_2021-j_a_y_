@@ -1,7 +1,9 @@
 #include"myLib.h"
+
 int main()
 {
     system("color f0");
     menu_principal();
+
     return 0;
 }

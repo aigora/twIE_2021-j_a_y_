@@ -1,7 +1,5 @@
 #include"myLib.h"
 
-int level=0;
-
 int mapa[M][N][N]={
     {
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -145,17 +143,17 @@ void menu_juego()
 
              if('1'==select[0])
              {
-                 level=0;
+                 level[0]=0;
                  break;
              }
              else if('2'==select[0])
              {
-                 level=1;
+                 level[0]=1;
                  break;
              }
              else if('3'==select[0])
              {
-                 level=2;
+                 level[0]=2;
                  break;
              }
              else
@@ -173,7 +171,7 @@ void menu_juego()
     {
         for(j=0;j<N; j++)
         {
-        if(mapa[level][i][j]==3)
+        if(mapa[level[0]][i][j]==3)
                {
                    x=i;
                    y=j;
@@ -189,7 +187,7 @@ void menu_juego()
     {
         for(j=0;j<N; j++)
         {
-        if(mapa[level][i][j]==3)
+        if(mapa[level[0]][i][j]==3)
                {
                    x=i;
                    y=j;
@@ -226,7 +224,7 @@ int movimiento()
         }
         if(flag==1)
         {
-            if(level==M-1)
+            if(level[0]==M-1)
             {
                 printf("Finalizado el juego\n");
                 printf(" Has conseguido %i estrellas.\n",estrellas[0]);
@@ -235,7 +233,7 @@ int movimiento()
         else
         {
             system("pause");
-            level++;//SIGUIENTE NIVEL
+            level[0]++;//SIGUIENTE NIVEL
             return 0;
         }}
     }
@@ -247,18 +245,18 @@ int Up()
     y=posicion_y();
     if(x!=0)
     {
-        if(mapa[level][(x-1)][y]==1)//funciona
+        if(mapa[level[0]][(x-1)][y]==1)//funciona
         {
-            mapa[level][(x-1)][y]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][(x-1)][y]=3;
+            mapa[level[0]][x][y]=1;
         }
-        else if(mapa[level][(x-1)][y]==5)
+        else if(mapa[level[0]][(x-1)][y]==5)
         {
-            mapa[level][(x-1)][y]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][(x-1)][y]=3;
+            mapa[level[0]][x][y]=1;
             cuenta_estrellas();
         }
-        else if(mapa[level][(x-1)][y]==4)
+        else if(mapa[level[0]][(x-1)][y]==4)
         {
             return 1;
         }
@@ -272,18 +270,18 @@ int Down()
     y=posicion_y();
     if(x!=N-1)
     {
-        if(mapa[level][(x+1)][y]==1)//funciona
+        if(mapa[level[0]][(x+1)][y]==1)//funciona
         {
-            mapa[level][(x+1)][y]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][(x+1)][y]=3;
+            mapa[level[0]][x][y]=1;
         }
-        else if(mapa[level][(x+1)][y]==5)
+        else if(mapa[level[0]][(x+1)][y]==5)
         {
-            mapa[level][(x+1)][y]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][(x+1)][y]=3;
+            mapa[level[0]][x][y]=1;
             cuenta_estrellas();
         }
-        else if(mapa[level][(x+1)][y]==4)
+        else if(mapa[level[0]][(x+1)][y]==4)
         {
             return 1;
         }
@@ -297,18 +295,18 @@ int Right()
     y=posicion_y();
     if(y!=N-1)
     {
-        if(mapa[level][x][(y+1)]==1)//funciona
+        if(mapa[level[0]][x][(y+1)]==1)//funciona
         {
-            mapa[level][x][(y+1)]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][x][(y+1)]=3;
+            mapa[level[0]][x][y]=1;
         }
-        else if(mapa[level][x][(y+1)]==5)
+        else if(mapa[level[0]][x][(y+1)]==5)
         {
-            mapa[level][x][(y+1)]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][x][(y+1)]=3;
+            mapa[level[0]][x][y]=1;
             cuenta_estrellas();
         }
-        else if(mapa[level][x][(y+1)]==4)
+        else if(mapa[level[0]][x][(y+1)]==4)
         {
             return 1;
         }
@@ -322,18 +320,18 @@ int Left()
     y=posicion_y();
     if(x!=0)
     {
-        if(mapa[level][x][(y-1)]==1)//funciona
+        if(mapa[level[0]][x][(y-1)]==1)//funciona
         {
-            mapa[level][x][(y-1)]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][x][(y-1)]=3;
+            mapa[level[0]][x][y]=1;
         }
-        else if(mapa[level][x][(y-1)]==5)
+        else if(mapa[level[0]][x][(y-1)]==5)
         {
-            mapa[level][x][(y-1)]=3;
-            mapa[level][x][y]=1;
+            mapa[level[0]][x][(y-1)]=3;
+            mapa[level[0]][x][y]=1;
             cuenta_estrellas();
         }
-        else if(mapa[level][x][(y-1)]==4)
+        else if(mapa[level[0]][x][(y-1)]==4)
         {
             return 1;
         }
@@ -349,15 +347,15 @@ void print() //Imprimir el mapa en pantalla
     {
         for(j=0;j<N; j++)
         {
-            if(mapa[level][i][j]==0)
+            if(mapa[level[0]][i][j]==0)
                 printf("[_]");//PARED
-            else if(mapa[level][i][j]==3)
+            else if(mapa[level[0]][i][j]==3)
                 printf("(x)");//PERSONAJE
-            else if(mapa[level][i][j]==1)
+            else if(mapa[level[0]][i][j]==1)
                 printf("   ");//ESPACIO
-            else if(mapa[level][i][j]==4)
+            else if(mapa[level[0]][i][j]==4)
                 printf(" X ");//SALIDA
-            else if(mapa[level][i][j]==5)
+            else if(mapa[level[0]][i][j]==5)
                 printf(" * ");//ESTRELLA
         }
         printf("\n");

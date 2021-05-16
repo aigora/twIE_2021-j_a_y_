@@ -1,21 +1,19 @@
 #include<stdio.h>
 #define N 15
-#define M 3//NIVELES
+#define M 3//Numero de niveles
+
+int level[1];//Nivel
+char apodo[21];//Nombre del jugador
 
 
-
-
+//contenido deljuego
 void menu_principal();
 void menu_juego();
 void iniciar_juego();
 void instrucciones();
-void salir();
-void limpiar();
-char apodo[21];
-void print();
 
 
-//Aqui comienza funciones del movimiento
+//Funciones del movimiento
 int posicion_x(void);
 int posicion_y(void);
 int movimiento();
@@ -24,6 +22,12 @@ int Down();
 int Left();
 int Right();
 
-
+//Funciones de estrellas recogidas
 int estrellas[1];//numero de estrellas
-void cuenta_estrellas();
+void cuenta_estrellas();//contador
+
+
+
+void limpiar();//limpiar pantalla
+void print();//Dibujar el mapa
+void salir();//Salir del juego
