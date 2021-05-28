@@ -54,6 +54,19 @@ int mapa[M][N][N]={
 },
 };
 
+
+typedef struct
+{
+    char nombre[20];
+    char code[20];
+}Users;
+
+typedef struct {/////////// Uso de estructura
+  char nombre[21];
+  int puntuacion;
+} datos_rankin;
+
+
 void menu_principal() //Para regresar al menu principal
 {
     char seleccion;
@@ -69,7 +82,7 @@ void menu_principal() //Para regresar al menu principal
         {
             case '1':
                     printf("\n\n\n\tPulse alguna tecla para iniciar\n\n\n");
-                    iniciar_juego();
+                    antes_de_inicio();
             case '2':
                 {
                     instrucciones();
@@ -87,6 +100,32 @@ void menu_principal() //Para regresar al menu principal
                 menu_principal();
             break;
 }}
+
+void antes_de_inicio()
+{
+    limpiar();
+    int selec;
+        printf("\n1. Partida rapida\n2. Entrar \n3. Registrar\n4. Salir\n\n");
+        scanf("%i",&selec);
+        switch(selec)
+        {
+        case 1:
+            iniciar_juego();
+            break;
+        case 2:
+            usuario();
+            break;
+        case 3:
+            registro();
+            break;
+        case 4:
+            salir();
+            break;
+        default:
+            antes_de_inicio();
+            break;
+        }
+}
 
 void iniciar_juego()
 {
@@ -159,6 +198,118 @@ void menu_juego()
              }
 
          }
+}
+
+void registro()//nombre
+{
+    Users a={0}, b={0};
+    char temp[20]={-1};
+    FILE *pe=NULL;
+    pe=fopen("users.txt","r");
+        if(pe==NULL)
+        {
+            printf("Error con el archivo");
+            return;
+        }
+do{
+    revision();
+     printf("\n Introduce la contraseña\n;");
+     scanf("%s", a.code);
+     printf("\n Introduce otra vez\n;");
+     scanf("%s", temp);
+     if(strcmp(temp,a.code)!=0)
+     printf("\n Error\n");
+    }while(strcmp(a.code,temp)!=0);
+    fclose(pe); pe=NULL;
+    pe=fopen("users.txt","a");
+    fwrite(&a,sizeof(Users),1,pe);
+    printf("\nRegistrado correctamente\n");
+    fclose(pe);
+    pe=NULL;
+    return;
+}
+
+void revision()//usuario
+{   Users a={0}, b={0};
+    char temp[20]={-1};
+    FILE *pe=NULL;
+    pe=fopen("users.txt","r");
+        if(pe==NULL)
+        {
+            printf("Error con el archivo");
+            return;
+        }
+    printf("Bienvenido\n");
+    printf("Registra tu nombre:");
+    scanf("%s", a.nombre);
+    pe=fopen(a.nombre,"r");
+    do{
+
+    if(pe!=NULL)
+    {
+        if(feof(pe)==0)
+            fread(&b, sizeof(Users),1,pe);
+        else
+        {
+            printf("\ncuenta no registrado, registra nueva cuenta\n");
+            return registro();
+        }
+    }
+    else
+    {
+        printf("\ncuenta registrada\n");
+        fclose(pe);
+        pe=NULL;
+        return;
+    }
+     }while((strcmp(a.nombre, b.nombre)!=0));
+}
+
+void usuario()
+{
+    Users a={0}, b={0};
+    char tmp[20]={-1};
+    FILE *pe;
+    pe=fopen("users.txt","r");
+    if(pe==NULL)
+    {
+        printf("ERROR ABRIR ARCHIVO");
+        return;
+    }
+    printf("\nIntroduce su usuario\n:");
+    scanf("%s", a.nombre);
+    fread(&b, sizeof(Users),1, pe);
+    do
+    {
+        if(strcmp(a.nombre,b.nombre)!=0)
+        {
+            if(feof(pe)==0)
+            {
+                fread(&b,sizeof(Users),1,pe);
+            }
+            else
+            {
+                printf("\nCuenta no encontrada, registra primero\n");
+                fclose(pe); pe=NULL;
+                return revision();
+            }
+        }
+        else
+        {
+            break;
+        }
+    }while(0);
+    printf("\nIntroduce tu contraseña\n");
+    do{
+        scanf("%s", tmp);
+        if(strcmp(tmp,b.code)!=0)
+            printf("Error");
+        else break;
+    }while(1);
+
+    printf("\nEntrando\n");
+    fclose(pe); pe=NULL;
+    iniciar_juego();
 }
 
  int posicion_x()//POSICION DEL PERSONAJE X
@@ -365,11 +516,6 @@ void cuenta_estrellas()
 {
     estrellas[0]+=1;
 }
-
-typedef struct {/////////// Uso de estructura
-  char nombre[21];
-  int puntuacion;
-} datos_rankin;
 
 void rankin()
 {

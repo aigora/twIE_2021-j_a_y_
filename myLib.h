@@ -10,6 +10,7 @@ char apodo[21];//Nombre del jugador
 //contenido deljuego
 void menu_principal();
 void menu_juego();
+void antes_de_inicio();
 void iniciar_juego();
 void instrucciones();
 
@@ -22,10 +23,14 @@ int Down();
 int Left();
 int Right();
 
+//Funciones de registro
+void usuario();
+void registro();
+void revision();
+
 //Funciones de estrellas recogidas
 int estrellas[1];//numero de estrellas
 void cuenta_estrellas();//contador
-
 
 //ranking
 void rankin();//Uso de estructuras
