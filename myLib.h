@@ -34,6 +34,7 @@ void cuenta_estrellas();//contador
 
 //ranking
 void rankin();//Uso de estructuras
+void leer_rank();
 
 
 void limpiar();//limpiar pantalla
