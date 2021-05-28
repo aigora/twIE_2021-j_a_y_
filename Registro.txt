@@ -1,0 +1,145 @@
+void usuario();
+void registro();
+void revision();
+typedef struct
+{
+    char nombre[20];
+    char code[20];
+}Users;
+#include<stdio.h>
+int main()//menu
+{
+   int input=-1;
+    do
+    {
+        printf("1. Entradar\n");
+        printf("2. Registrar\n");
+        printf("3. Salir\n");
+        printf("Elige->");
+        scanf("%d",&input);
+        switch(input)
+        {
+        case 1:
+            usuario();
+            break;
+        case 2:
+            registro();
+            break;
+        case 3:
+            puts;//volver al menu
+            return 0;
+        }
+    } while(input);
+    return 0;
+}
+
+void registro()//nombre
+{
+    Users a={0}, b={0};
+    char temp[20]={-1};
+    FILE *pe=NULL;
+    pe=fopen("users.txt","r");
+        if(pe==NULL)
+        {
+            printf("Error con el archivo");
+            return;
+        }
+do{
+    revision();
+     printf("\n Introduce la contraseña\n;");
+     scanf("%s", a.code);
+     printf("\n Introduce otra vez\n;");
+     scanf("%s", temp);
+     if(strcmp(temp,a.code)!=0)
+     printf("\n Error\n");
+    }while(strcmp(a.code,temp)!=0);
+    fclose(pe); pe=NULL;
+    pe=fopen("users.txt","a");
+    fwrite(&a,sizeof(Users),1,pe);
+    printf("\nRegistrado correctamente\n");
+    fclose(pe);
+    pe=NULL;
+    return;
+}
+void revision()//usuario
+{   Users a={0}, b={0};
+    char temp[20]={-1};
+    FILE *pe=NULL;
+    pe=fopen("users.txt","r");
+        if(pe==NULL)
+        {
+            printf("Error con el archivo");
+            return;
+        }
+    printf("Bienvenido\n");
+    printf("Registra tu nombre:");
+    scanf("%s", a.nombre);
+    pe=fopen(a.nombre,"r");
+    do{
+
+    if(pe!=NULL)
+    {
+        if(feof(pe)==0)
+            fread(&b, sizeof(Users),1,pe);
+        else
+        {
+            printf("\ncuenta no registrado, registra nueva cuenta\n");
+            return registro();
+        }
+    }
+    else
+    {
+        printf("\ncuenta registrada\n");
+        fclose(pe);
+        pe=NULL;
+        return;
+    }
+     }while((strcmp(a.nombre, b.nombre)!=0));
+}
+void usuario()
+{
+    Users a={0}, b={0};
+    char tmp[20]={-1};
+    FILE *pe;
+    pe=fopen("users.txt","r");
+    if(pe==NULL)
+    {
+        printf("ERROR ABRIR ARCHIVO");
+        return;
+    }
+    printf("\nIntroduce su usuario\n:");
+    scanf("%s", a.nombre);
+    fread(&b, sizeof(Users),1, pe);
+    do
+    {
+        if(strcmp(a.nombre,b.nombre)!=0)
+        {
+            if(feof(pe)==0)
+            {
+                fread(&b,sizeof(Users),1,pe);
+            }
+            else
+            {
+                printf("\nCuenta no encontrada, registra primero\n");
+                fclose(pe); pe=NULL;
+                return revision();
+            }
+        }
+        else
+        {
+            break;
+        }
+    }while(0);
+
+    printf("\nIntroduce tu contraseña\n");
+
+    do{
+        scanf("%s", tmp);
+        if(strcmp(tmp,b.code)!=0)
+            printf("Error");
+        else break;
+    }while(1);
+
+    printf("\nEntrando\n");
+    fclose(pe); pe=NULL;
+}
