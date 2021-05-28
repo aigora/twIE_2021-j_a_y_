@@ -378,6 +378,7 @@ int movimiento()
                 printf(" \tHas conseguido %i estrellas.\n\n",estrellas[0]);
                 system("pause");
                 rankin();
+                leer_rank();
                 salir();//TERMINAR LA PARTIDA
             }
         else
@@ -528,6 +529,18 @@ void rankin()
     fprintf(clasificacion, "\t %s :\t %i\n", jugador.nombre, jugador.puntuacion);
     fclose(clasificacion);
 }
+void leer_rank()
+{
+limpiar();
+    FILE *clasificacion;
+    clasificacion = fopen("clasificacion.txt", "r");
+    char c;
+    while ((c=fgetc(clasificacion))!=EOF)
+            putchar(c);
+    system("pause");//pausa el programa para no empezar de nuevo
+    fclose (clasificacion);
+    salir();
+}
 
 void instrucciones()
 {
@@ -539,7 +552,6 @@ limpiar();
             putchar(c);
 system("pause");//pausa el programa para no empezar de nuevo
     fclose (instruccion);
-
 menu_principal();
 }
 
