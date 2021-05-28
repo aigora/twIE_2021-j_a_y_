@@ -17,7 +17,6 @@ int mapa[M][N][N]={
     {0,1,0,1,0,0,0,1,0,1,1,0,1,5,0},
     {0,5,0,1,1,1,1,1,1,1,1,0,1,1,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-
 },
 {
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -95,8 +94,6 @@ void iniciar_juego()
     int elige;
         printf(" 1. Inicio rapido\n 2. Nombrar al Campeon\n");
         scanf("%i",&elige);
-        char apodo[21];//////////////////////////////////////////////////////////////////////
-
         if(elige==1)
         {
             limpiar();
@@ -226,8 +223,10 @@ int movimiento()
         {
             if(level[0]==M-1)
             {
-                printf("Finalizado el juego\n");
-                printf(" Has conseguido %i estrellas.\n",estrellas[0]);
+                printf(" \n\n\tFinalizando el juego\n");
+                printf(" \tHas conseguido %i estrellas.\n\n",estrellas[0]);
+                system("pause");
+                rankin();
                 salir();//TERMINAR LA PARTIDA
             }
         else
@@ -367,6 +366,23 @@ void cuenta_estrellas()
     estrellas[0]+=1;
 }
 
+typedef struct {/////////// Uso de estructura
+  char nombre[21];
+  int puntuacion;
+} datos_rankin;
+
+void rankin()
+{
+    datos_rankin jugador;
+    strcpy(jugador.nombre, apodo);
+    jugador.puntuacion = estrellas[0];
+
+    FILE *clasificacion;
+    clasificacion = fopen("clasificacion.txt", "a");
+    fprintf(clasificacion, "\t %s :\t %i\n", jugador.nombre, jugador.puntuacion);
+    fclose(clasificacion);
+}
+
 void instrucciones()
 {
 limpiar();
@@ -376,6 +392,8 @@ limpiar();
     while ((c=fgetc(instruccion))!=EOF)
             putchar(c);
 system("pause");//pausa el programa para no empezar de nuevo
+    fclose (instruccion);
+
 menu_principal();
 }
 
